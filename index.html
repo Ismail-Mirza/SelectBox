@@ -1,40 +1,207 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Box</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            margin: 20px;
+        }
+
+        .option_s {
+            visibility: hidden;
+            opacity: 0;
+            padding: 20px;
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.547);
+            z-index: 9999999;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .option_s.show_sbox {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .option_s .option_list {
+            padding: 10px 0px;
+            color: #000;
+            text-decoration: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .option_s .option_list::before {
+            position: relative;
+            background: rgb(247, 247, 247);
+            width: 10px;
+            height: 10px;
+            padding: 5px;
+            border-radius: 20px;
+            content: "";
+            border: 4px solid red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .option_s .option_list.list_active::before {
+            background: rgb(0, 0, 255);
+            border: 4px solid rgb(0, 0, 255);
+            content: "";
+        }
+
+        .list_active {
+            color: rgb(0, 26, 255) !important;
+        }
+
+        .option_whitebx {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 632px;
+            background: #fff;
+            padding: 20px;
+        }
+
+        .option_content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    </style>
 </head>
+
 <body>
-   <div class="container">
-    <form>
-        <div class="body">
-            <button class="btn btn-default">
-                <span class="text" data-value="javascript">JavaScript</span> 
-                <span class="caret"></span>
-            </button>
+    <div class="wrapper">
+        <div class="select">
+            <input onclick="addlist(this)" type="text" class="select_bx" placeholder="Pom 003" />
+            <span>!</span>
         </div>
-    </form>
-   </div>
-   
-<!-- /.container -->
-<div class="modal">
-    <div class="" style="transition: all 0.4s ease 0s; inset: 20px;">
-        <div class="modal-title">Select an option</div>
-        <div class="list-container">
-            <a href="#" class="modal-control"  data-value="JavaScript">JavaScript</a>
-            <a href="#" class="modal-control" data-value="Python">Python</a>
-            <a href="#" class="modal-control" undefined="" data-value="Java">Java</a>
-            <a href="#" class="modal-control" undefined="" data-value="Kotlin">kotlin</a>
-        </div>
-        <div class="modal-buttons">
-            <a href="#" class="savebtn">Save</a>
-            <a href="#" class="cancelbtn">Cancel</a>
+        <div class="option_s">
+            <div class="option_whitebx">
+                <h3>select</h3>
+                <div class="option_content">
+                    <a href="#" class="option_list" data-value="Pom 003">Pom 003</a>
+                    <a href="#" class="option_list" data-value="Pom 010">Pom 010</a>
+                    <a href="#" class="option_list" data-value="Pom 023">Pom 023</a>
+                    <a href="#" class="option_list" data-value="Pom 023">Pom 023</a>
+                
+                </div>
+                <div>
+                    <button id="save_btn"><a href="#">save</a></button>
+                    <button id="cancel_btn"><a href="#">Cancel</a></button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
- <script src="script.js"></script>
+    <div class="wrapper">
+        <div class="select">
+            <input onclick="addlist(this)" type="text" class="select_bx" placeholder="Pom 3" />
+            <span>!</span>
+        </div>
+        <div class="option_s">
+            <div class="option_whitebx">
+                <h3>select</h3>
+                <div class="option_content">
+                    <a href="#" class="option_list" data-value="Pom 3">Pom 3</a>
+                    <a href="#" class="option_list" data-value="Pom 10">Pom 10</a>
+                    <a href="#" class="option_list" data-value="Pom 23">Pom 23</a>
+                    <a href="#" class="option_list" data-value="Pom 23">Pom 23</a>
+                
+                </div>
+                <div>
+                    <button id="save_btn">Save</button>
+                    <button id="cancel_btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="select">
+            <input onclick="addlist(this)" type="text" class="select_bx" placeholder="Python" />
+            <span>!</span>
+        </div>
+        <div class="option_s">
+            <div class="option_whitebx">
+                <h3>select</h3>
+                <div class="option_content">
+                    <a href="#" class="option_list" data-value="Python">Python</a>
+                    <a href="#" class="option_list" data-value="Kotlin">Kotlin</a>
+                    <a href="#" class="option_list" data-value="Java">Java</a>
+                    <a href="#" class="option_list" data-value="Matlab">Matlab</a>
+                
+                </div>
+                <div>
+                    <button id="save_btn">save</button>
+                    <button id="cancel_btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+     
+
+        function addlist(self) {
+            let selected_option = null;
+            const parentElement = self.parentElement.parentElement;
+            let option_s = parentElement.querySelector(".option_s");
+            option_s.classList.add("show_sbox");
+            option_s.querySelector("#cancel_btn").addEventListener("click",()=>{
+                hide_sbox(option_s,selected_option);
+            })
+            option_s.querySelectorAll(".option_list").forEach(option=>{
+                if(option.getAttribute("data-value").toLowerCase() === self.getAttribute("placeholder").toLowerCase()){
+                    select_option(option);
+                    selected_option = option;
+                }
+                option.addEventListener("click",(event)=>{
+                    event.preventDefault();
+                    deselect_prev(selected_option);
+                    select_option(option);
+                    selected_option = option;
+                })
+            })
+            option_s.querySelector("#save_btn").addEventListener("click",()=>{
+                    hide_sbox(option_s);
+                    update_ui(self,selected_option);
+            })
+
+        }
+        function update_ui(self,selected_option){
+            self.setAttribute("placeholder",selected_option.getAttribute("data-value"));
+            deselect_prev(selected_option);
+        }
+        function hide_sbox(option_s,selected_option) {
+            option_s.classList.remove("show_sbox");
+            if(selected_option){
+                deselect_prev(selected_option);
+            }
+        }
+        function select_option(option){
+            option.classList.add("list_active");
+        }
+        function deselect_prev(option)
+        {
+            option.classList.remove("list_active");
+        }
+        
+    </script>
 </body>
+
 </html>
